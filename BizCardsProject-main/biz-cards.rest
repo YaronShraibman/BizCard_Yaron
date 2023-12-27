@@ -1,0 +1,183 @@
+### Post a user:
+POST http://localhost:8080/api/v1/users
+Content-Type: application/json
+
+{
+  "name": {
+    "first": "Yaron",
+    "middle": "Shraibman",
+    "last": "Shraibman"
+  },
+  "phone": "0547276675",
+  "email": "yaron1@email.com",
+  "password": "Abc!123Abc!2",
+  "address": {
+    "state": "IL",
+    "country": "Israel",
+    "city": "Arad",
+    "street": "Shoham",
+    "houseNumber": 5,
+    "zip": 8920435
+  },
+  "isBusiness": true
+}
+
+
+### Login as ADMIN:
+POST http://localhost:8080/api/v1/users/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "Admin123!"
+}
+
+### Login as USER:
+POST http://localhost:8080/api/v1/users/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "Userpassword1!"
+}
+
+### Login as Business:
+POST http://localhost:8080/api/v1/users/login
+Content-Type: application/json
+
+{
+  "email": "business@example.com",
+  "password": "Businesspassword1!"
+}
+
+
+### Get all users:
+GET http://localhost:8080/api/v1/users
+Authorization: Bearer {{AdminToken}}
+
+### Get user by id with admin token - 200:
+GET http://localhost:8080/api/v1/users/657da4de3c500dfdcc7d4c4d
+Authorization: Bearer {{AdminToken}}
+
+
+### update a user:
+PUT http://localhost:8080/api/v1/users/{ID}
+Content-Type: application/json
+Authorization: bearer {{UserToken}}
+
+{
+  "name": {
+    "first": "Ell12345",
+    "middle": "abcde",
+    "last": "Vis"
+  },
+  "phone": "0512345567",
+  "email": "ellvis@email.com",
+  "password": "Abc!123Abc",
+  "address": {
+    "state": "IL",
+    "country": "Israel",
+    "city": "Arad",
+    "street": "Shoham",
+    "houseNumber": 5,
+    "zip": 8920435
+  },
+  "isBusiness": true
+}
+
+
+### Partial update a user (only isBusiness):
+PATCH http://localhost:8080/api/v1/users/657d5917a0319db03422e2ae
+Content-Type: application/json
+Authorization: bearer {{UserToken}} // {{AdminToken}} // {{BizToken}}
+
+{
+  "isBusiness": true
+}
+
+### Delete a user:
+DELETE http://localhost:8080/api/v1/users/65645f92dde85faea9d3e380
+Authorization: bearer {{AdminToken}}
+
+
+
+
+
+
+
+### Get all cards:
+GET http://localhost:8080/api/v1/cards
+
+### Get my cards:
+GET http://localhost:8080/api/v1/cards/my-cards
+Authorization: bearer {{UserToken}} // {{BizToken}}
+
+### get cards by id with admin token - 200:
+GET http://localhost:8080/api/v1/cards/657d5d9da0319db03422e2eb
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVsbHZpc0BlbWFpbC5jb20iLCJpZCI6IjY1NWY3MGY3NGE0NTVmN2Q2ZmE0MGRhYiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcwMDc1MzkzMn0.H-EJodqNhHINxHoPs3qzTW6-fOzkhVF3qi8SFeIeW6c
+
+
+### post a card:
+POST http://localhost:8080/api/v1/cards
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vZUBlbWFpbC5jb20iLCJpZCI6IjY1N2Q1ZDdjYTAzMTlkYjAzNDIyZTJlMyIsImlzQWRtaW4iOmZhbHNlLCJpc0J1c2luZXNzIjp0cnVlLCJpYXQiOjE3MDI3MTQ3NjJ9.TMZ9lkr0YTjfdcKCM6ramToH6KRvH0XlYz_56KPYM8Y
+
+{
+  "title": "Sami Doe",
+  "subtitle": "Software Engineer",
+  "description": "Experienced software engineer with a passion for developing innovative programs that expedite the efficiency and effectiveness of organizational success.",
+  "phone": "052-1234567",
+  "email": "Sami@example.com",
+  "web": "http://www.johndoe.com",
+  "address": {
+    "street": "123 Main St",
+    "city": "San Francisco",
+    "state": "California",
+    "zip": "94101",
+    "country": "USA",
+    "houseNumber": "123"
+  },
+  "image": {
+    "url": "https://picsum.photos/200",
+    "alt": "John Doe"
+  }
+}
+
+### update a card:
+PUT http://localhost:8080/api/v1/cards/657d5d9da0319db03422e2eb
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVsbHZpc0BlbWFpbC5jb20iLCJpZCI6IjY1NWY3MGY3NGE0NTVmN2Q2ZmE0MGRhYiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcwMDc1MzkzMn0.H-EJodqNhHINxHoPs3qzTW6-fOzkhVF3qi8SFeIeW6c
+
+{
+  "title": "Sami Doe12312341234",
+  "subtitle": "Software Engineer",
+  "description": "Experienced software engineer with a passion for developing innovative programs that expedite the efficiency and effectiveness of organizational success.",
+  "phone": "052-1234567",
+  "email": "Sami@example.com",
+  "web": "http://www.johndoe.com",
+  "image": {
+    "url": "https://picsum.photos/200",
+    "alt": "John Doe"
+  },
+  "address": {
+    "city": "San Francisco",
+    "country": "USA",
+    "houseNumber": 123,
+    "zip": 94101,
+    "state": "California",
+    "street": "123 Main St"
+  }
+}
+
+### partial update a card(only title) :
+PATCH http://localhost:8080/api/v1/cards/657d5d9da0319db03422e2eb
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVsbHZpc0BlbWFpbC5jb20iLCJpZCI6IjY1NWY3MGY3NGE0NTVmN2Q2ZmE0MGRhYiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcwMDc1MzkzMn0.H-EJodqNhHINxHoPs3qzTW6-fOzkhVF3qi8SFeIeW6c
+
+{
+  "title": "test123123"
+}
+
+### delete a card:
+DELETE http://localhost:8080/api/v1/cards/657d5e35a0319db03422e2f3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVsbHZpc0BlbWFpbC5jb20iLCJpZCI6IjY1NWY3MGY3NGE0NTVmN2Q2ZmE0MGRhYiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcwMDc1MzkzMn0.H-EJodqNhHINxHoPs3qzTW6-fOzkhVF3qi8SFeIeW6c

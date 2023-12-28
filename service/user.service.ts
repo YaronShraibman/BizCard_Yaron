@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { User } from "../db/model/user.model";
-import { IUser } from "./../db/types/db.d";
+import { IUser } from "../db/types/db";
 import bcrypt from "bcrypt";
 import { ApplicationError } from "../error/application-error";
 

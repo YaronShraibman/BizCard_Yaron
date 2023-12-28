@@ -1,4 +1,4 @@
-import { roleSchema } from "./../schema/role.schema";
+import { roleSchema } from "../schema/role.schema";
 import { model } from "mongoose";
 
 // creates a Role class with methods for save() / findAll()

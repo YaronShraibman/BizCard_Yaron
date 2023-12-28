@@ -1,4 +1,4 @@
-import { IUser } from "./db.d";
+import { IUser } from "./db";
 import mongoose, { Date } from "mongoose";
 
 export type IRole = {

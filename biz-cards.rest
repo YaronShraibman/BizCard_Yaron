@@ -9,7 +9,7 @@ Content-Type: application/json
     "last": "Shraibman"
   },
   "phone": "0547276675",
-  "email": "yaron1@email.com",
+  "email": "yaron31@email.com",
   "password": "Abc!123Abc!2",
   "address": {
     "state": "IL",
